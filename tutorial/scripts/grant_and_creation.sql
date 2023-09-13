@@ -16,3 +16,6 @@ SHOW APPLICATION PACKAGES;
 CREATE SCHEMA stage_content;
 CREATE OR REPLACE STAGE hello_snowflake_package.stage_content.hello_snowflake_stage
   FILE_FORMAT = (TYPE = 'csv' FIELD_DELIMITER = '|' SKIP_HEADER = 1);
+
+
+/* Add a Stored Procedure to setup.sql */
