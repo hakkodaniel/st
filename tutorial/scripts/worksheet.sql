@@ -1,6 +1,6 @@
 /* 
 This worksheet will be used for various tasks during the Snowflake tutorial: Developing an Application with the Native Apps Framework 
-Not all required lines are here as some are used in another files. However, this worksheet follows the tutorial steps and may be used
+Not all required lines are here as some are used in other files. However, this worksheet follows the tutorial steps and may be used
 to accompany it. 
 */
 
@@ -95,3 +95,19 @@ SELECT code_schema.addone(1);
 
 /* Test python external module */
 SELECT code_schema.multiply(1,2);
+
+/* 8. Test streamlit object */
+DROP APPLICATION hello_snowflake_app;
+
+/* Run this line again to create a new version of the app */
+CREATE APPLICATION hello_snowflake_app
+  FROM APPLICATION PACKAGE hello_snowflake_package
+  USING '@hello_snowflake_package.stage_content.hello_snowflake_stage';
+
+
+/* 9. Add version to app */
+ALTER APPLICATION PACKAGE hello_snowflake_package
+  ADD VERSION v1_0 USING '@hello_snowflake_package.stage_content.hello_snowflake_stage';
+
+/* Verify version was added to app package */
+SHOW VERSIONS IN APPLICATION PACKAGE hello_snowflake_package;
