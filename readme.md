@@ -2,4 +2,7 @@
 This repository contains code used to develop projects using streamlit.
 
 ## Active projects:
-Currently, only a tutorial for a Snowflake App is being developed.
+Streamlit app to test learning.
+
+## Ended projects:
+Tutorial for a Snowflake Native App.
