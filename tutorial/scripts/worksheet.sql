@@ -111,3 +111,26 @@ ALTER APPLICATION PACKAGE hello_snowflake_package
 
 /* Verify version was added to app package */
 SHOW VERSIONS IN APPLICATION PACKAGE hello_snowflake_package;
+
+/* Install app from a specific version */
+DROP APPLICATION hello_snowflake_app;
+CREATE APPLICATION hello_snowflake_app
+  FROM APPLICATION PACKAGE hello_snowflake_package
+  USING VERSION V1_0;
+
+/* 10. Test application in Snowsight */
+LIST @hello_snowflake_package.stage_content.hello_snowflake_stage;
+CALL core.hello();
+SELECT * FROM code_schema.accounts_view;
+SELECT code_schema.addone(10);
+SELECT code_schema.multiply(2,3);
+
+/* 11. Set default release directive */
+/* Show app package versions */
+SHOW VERSIONS IN APPLICATION PACKAGE hello_snowflake_package;
+
+/* Set default reslease directive */
+ALTER APPLICATION PACKAGE hello_snowflake_package
+  SET DEFAULT RELEASE DIRECTIVE
+  VERSION = v1_0 --choose version
+  PATCH = 0; --choose patch
